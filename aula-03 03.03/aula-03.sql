@@ -1,0 +1,11 @@
+SELECT count(*) FROM advisor --2.000
+SELECT count(*) FROM classroom --30
+SELECT count(*) FROM course  --200
+SELECT count(*) FROM department --20
+SELECT count(*) FROM instructor --50
+SELECT count(*) FROM prereq --100
+SELECT count(*) FROM section --100
+SELECT count(*) FROM student --2.000
+SELECT count(*) FROM takes --30.000
+SELECT count(*) FROM teaches --100
+SELECT count(*) FROM time_slot --20
