@@ -4,7 +4,7 @@ SELECT
     i.name, 
     COUNT(t.ID) AS [Number of sections]
 FROM 
-    dbo.instructor i LEFT OUTER JOIN dbo.teaches t ON i.ID = t.ID
+    instructor i LEFT OUTER JOIN teaches t ON i.ID = t.ID
 GROUP BY 
     i.ID, 
     i.name
@@ -14,10 +14,8 @@ ORDER BY i.ID;
 SELECT 
     i.ID, 
     i.name, 
-    (SELECT COUNT(*) 
-     FROM dbo.teaches t 
-     WHERE t.ID = i.ID) AS [Number of sections]
-FROM dbo.instructor i
+    (SELECT COUNT(*) FROM teaches t WHERE t.ID = i.ID) AS [Number of sections]
+FROM instructor i
 ORDER BY i.ID;
 
 -- 3-)
@@ -29,8 +27,8 @@ SELECT
     s.year, 
     COALESCE(i.name, '-') AS name
 FROM 
-    dbo.section s LEFT JOIN dbo.teaches t ON s.course_id = t.course_id AND s.sec_id = t.sec_id AND s.semester = t.semester AND s.year = t.year
-        LEFT JOIN dbo.instructor i ON t.ID = i.ID WHERE s.semester = 'Spring' AND s.year = 2010
+    section s LEFT JOIN teaches t ON s.course_id = t.course_id AND s.sec_id = t.sec_id AND s.semester = t.semester AND s.year = t.year
+        LEFT JOIN instructor i ON t.ID = i.ID WHERE s.semester = 'Spring' AND s.year = 2010
 ORDER BY 
     s.course_id, 
     s.sec_id;
