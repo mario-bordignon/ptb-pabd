@@ -8,7 +8,7 @@ CREATE TABLE pessoa (
 
 -- 2-)
 ALTER TABLE pessoa
-ADD CONSTRAINT unique_pessoa UNIQUE (nome, sobrenome); -- optei por não incluir ID pois já é PK
+ADD CONSTRAINT unique_pessoa UNIQUE (ID, nome, sobrenome); -- optei por não incluir ID pois já é PK
 
 -- 3-)
 ALTER TABLE pessoa
