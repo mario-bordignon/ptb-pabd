@@ -12,7 +12,7 @@ ADD CONSTRAINT unique_pessoa UNIQUE (ID, nome, sobrenome); -- optei por não inc
 
 -- 3-)
 ALTER TABLE pessoa
-ALTER COLUMN idade SET NOT NULL;
+ALTER COLUMN idade INT NOT NULL;
 
 -- 4-)
 CREATE TABLE endereco (

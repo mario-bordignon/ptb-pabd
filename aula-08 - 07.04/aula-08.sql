@@ -1,0 +1,38 @@
+DROP USER User_A; -- Remover o de aula
+
+-- 1-)
+CREATE USER User_A WITH PASSWORD = 'senhab1X1';
+CREATE USER User_B WITH PASSWORD = 'senhab2X2';
+CREATE USER User_C WITH PASSWORD = 'senhab3X3';
+CREATE USER User_D WITH PASSWORD = 'senhab4X4';
+CREATE USER User_E WITH PASSWORD = 'senhab5X5';
+
+
+-- 2-)
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.endereco TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.advisor TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.course TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.department TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.instructor TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.pessoa TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.prereq TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.section TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.section_aula_05 TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.student TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.takes TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.teaches TO User_A WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.time_slot TO User_A WITH GRANT OPTION;
+
+
+-- 3-)
+SELECT 
+    dp.name AS Usuario,
+    dp2.name AS Objeto,
+    perm.permission_name,
+    perm.state_desc
+FROM sys.database_permissions perm
+JOIN sys.database_principals dp 
+    ON perm.grantee_principal_id = dp.principal_id
+JOIN sys.objects dp2 
+    ON perm.major_id = dp2.object_id
+WHERE dp.name = 'User_A';
